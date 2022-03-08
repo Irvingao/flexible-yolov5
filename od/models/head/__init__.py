@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
 from .yolo import YOLOHead
 
-__all__ = ['build_head']
-support_head = ['YOLOHead']
+__all__ = ['build_head', 'SegmentationHead']
+support_head = ['YOLOHead', 'SegmentationHead']
 
 
 def build_head(head_name, **kwargs):

@@ -4,7 +4,7 @@ from utils.general import make_divisible
 
 
 class YOLOv5(nn.Module):
-    def __init__(self, focus=True, version='L', with_C3TR=False):
+    def __init__(self, focus=True, version='S', with_C3TR=False):
         super(YOLOv5, self).__init__()
         self.version = version
         self.with_focus = focus
@@ -23,7 +23,7 @@ class YOLOv5(nn.Module):
             'stage3_1': 256,
             'stage3_2': 256,
             'stage4_1': 512,
-            'stage4_2': 512,
+            'stage4_2': 512, 
             'stage5': 1024,
             'spp': 1024,
             'csp1': 1024,
@@ -84,3 +84,4 @@ class YOLOv5(nn.Module):
     def re_channels_out(self):
         for k, v in self.channels_out.items():
             self.channels_out[k] = self.get_width(v)
+YOLOv5()
