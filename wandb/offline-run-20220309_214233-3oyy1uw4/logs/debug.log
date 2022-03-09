@@ -1,0 +1,34 @@
+2022-03-09 21:42:33,120 INFO    MainThread:15296 [wandb_setup.py:_flush():75] Loading settings from /home/pc/.config/wandb/settings
+2022-03-09 21:42:33,120 INFO    MainThread:15296 [wandb_setup.py:_flush():75] Loading settings from /home/pc/workspace/torch_ws/innox_ws/2D_seg_ws/yolov5_seg/flexible-yolov5/wandb/settings
+2022-03-09 21:42:33,120 INFO    MainThread:15296 [wandb_setup.py:_flush():75] Loading settings from environment variables: {}
+2022-03-09 21:42:33,120 INFO    MainThread:15296 [wandb_setup.py:_flush():75] Inferring run settings from compute environment: {'program_relpath': 'scripts/train.py', 'program': 'scripts/train.py'}
+2022-03-09 21:42:33,120 INFO    MainThread:15296 [wandb_setup.py:_flush():75] Applying login settings: {'mode': 'offline'}
+2022-03-09 21:42:33,121 INFO    MainThread:15296 [wandb_init.py:_log_setup():405] Logging user logs to /home/pc/workspace/torch_ws/innox_ws/2D_seg_ws/yolov5_seg/flexible-yolov5/wandb/offline-run-20220309_214233-3oyy1uw4/logs/debug.log
+2022-03-09 21:42:33,121 INFO    MainThread:15296 [wandb_init.py:_log_setup():406] Logging internal logs to /home/pc/workspace/torch_ws/innox_ws/2D_seg_ws/yolov5_seg/flexible-yolov5/wandb/offline-run-20220309_214233-3oyy1uw4/logs/debug-internal.log
+2022-03-09 21:42:33,121 INFO    MainThread:15296 [wandb_init.py:init():439] calling init triggers
+2022-03-09 21:42:33,121 INFO    MainThread:15296 [wandb_init.py:init():443] wandb.init called with sweep_config: {}
+config: {'weights': '', 'cfg': 'configs/model_yolo.yaml', 'data': 'configs/data.yaml', 'hyp': {'lr0': 0.01, 'lrf': 0.2, 'momentum': 0.937, 'weight_decay': 0.0005, 'warmup_epochs': 3.0, 'warmup_momentum': 0.8, 'warmup_bias_lr': 0.1, 'box': 0.05, 'cls': 0.5, 'cls_pw': 1.0, 'obj': 1.0, 'obj_pw': 1.0, 'iou_t': 0.2, 'anchor_t': 4.0, 'fl_gamma': 0.0, 'hsv_h': 0.015, 'hsv_s': 0.7, 'hsv_v': 0.4, 'degrees': 0.0, 'translate': 0.1, 'scale': 0.5, 'shear': 0.0, 'perspective': 0.0, 'flipud': 0.0, 'fliplr': 0.5, 'mosaic': 1.0, 'mixup': 0.0}, 'epochs': 300, 'batch_size': 16, 'img_size': [640, 640], 'rect': False, 'resume': False, 'nosave': False, 'notest': False, 'noautoanchor': False, 'evolve': False, 'bucket': '', 'cache_images': False, 'image_weights': False, 'device': '', 'multi_scale': False, 'single_cls': False, 'adam': False, 'sync_bn': False, 'local_rank': -1, 'log_imgs': 16, 'log_artifacts': False, 'workers': 8, 'project': 'runs/train', 'name': 'exp', 'exist_ok': False, 'quad': False, 'linear_lr': False, 'world_size': 1, 'global_rank': -1, 'save_dir': 'runs/train/exp10', 'total_batch_size': 16}
+2022-03-09 21:42:33,122 INFO    MainThread:15296 [wandb_init.py:init():492] starting backend
+2022-03-09 21:42:33,122 INFO    MainThread:15296 [backend.py:_multiprocessing_setup():101] multiprocessing start_methods=fork,spawn,forkserver, using: spawn
+2022-03-09 21:42:33,157 INFO    MainThread:15296 [backend.py:ensure_launched():219] starting backend process...
+2022-03-09 21:42:33,184 INFO    MainThread:15296 [backend.py:ensure_launched():225] started backend process with pid: 15378
+2022-03-09 21:42:33,185 INFO    MainThread:15296 [wandb_init.py:init():501] backend started and connected
+2022-03-09 21:42:33,195 INFO    MainThread:15296 [wandb_init.py:init():565] updated telemetry
+2022-03-09 21:42:33,250 INFO    MainThread:15296 [wandb_init.py:init():625] starting run threads in backend
+2022-03-09 21:42:34,864 INFO    MainThread:15296 [wandb_run.py:_console_start():1733] atexit reg
+2022-03-09 21:42:34,865 INFO    MainThread:15296 [wandb_run.py:_redirect():1606] redirect: SettingsConsole.REDIRECT
+2022-03-09 21:42:34,865 INFO    MainThread:15296 [wandb_run.py:_redirect():1611] Redirecting console.
+2022-03-09 21:42:34,866 INFO    MainThread:15296 [wandb_run.py:_redirect():1667] Redirects installed.
+2022-03-09 21:42:34,866 INFO    MainThread:15296 [wandb_init.py:init():664] run started, returning control to user process
+2022-03-09 21:42:45,062 INFO    MainThread:15296 [wandb_run.py:_atexit_cleanup():1702] got exitcode: 1
+2022-03-09 21:42:45,062 INFO    MainThread:15296 [wandb_run.py:_restore():1674] restore
+2022-03-09 21:42:47,430 INFO    MainThread:15296 [wandb_run.py:_on_finish():1831] got exit ret: 
+2022-03-09 21:42:47,532 INFO    MainThread:15296 [wandb_run.py:_on_finish():1831] got exit ret: 
+2022-03-09 21:42:47,634 INFO    MainThread:15296 [wandb_run.py:_on_finish():1831] got exit ret: done: true
+exit_result {
+}
+local_info {
+}
+
+2022-03-09 21:42:48,737 INFO    MainThread:15296 [wandb_run.py:_footer_history_summary_info():2865] rendering history
+2022-03-09 21:42:48,737 INFO    MainThread:15296 [wandb_run.py:_footer_history_summary_info():2894] rendering summary

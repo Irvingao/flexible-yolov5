@@ -76,6 +76,6 @@ class PAN(nn.Module):
         convp4 = self.convP4(PP4)
         concat4_5 = self.concat([convp4, P5])
         PP5 = self.P5(concat4_5)
-        print("PAN input channel size: P3 {}, P4 {}, P5 {}".format(self.P3_size, self.P4_size, self.P5_size))
-        print("PAN output channel size: PP3 {}, PP4 {}, PP5 {}".format(self.inner_p3, self.inner_p4, self.inner_p5))
+        # print("PAN input channel size: P3 {}, P4 {}, P5 {}".format(self.P3_size, self.P4_size, self.P5_size))
+        # print("PAN output channel size: PP3 {}, PP4 {}, PP5 {}".format(self.inner_p3, self.inner_p4, self.inner_p5))
         return PP3, PP4, PP5

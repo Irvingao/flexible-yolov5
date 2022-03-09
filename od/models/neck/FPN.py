@@ -75,6 +75,6 @@ class PyramidFeatures(nn.Module):
         up4 = self.P4_upsampled(P4)
         P3 = self.concat([C3, up4])
         P5 = C5
-        print("FPN input channel size: C3 {}, C4 {}, C5 {}".format(C3.shape, C4.shape, C5.shape))
-        print("FPN output channel size: P3 {}, P4 {}, P5 {}".format(P3.shape, P4.shape,P5.shape))
+        # print("FPN input channel size: C3 {}, C4 {}, C5 {}".format(C3.shape, C4.shape, C5.shape))
+        # print("FPN output channel size: P3 {}, P4 {}, P5 {}".format(P3.shape, P4.shape,P5.shape))
         return P3, P4, P5

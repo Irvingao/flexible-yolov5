@@ -34,22 +34,25 @@ class Model(nn.Module):
         self.pan = build_neck('PAN', **fpn_out)
         pan_out = self.pan.out_shape
 
-        model_config.head['ch'] = pan_out
-        self.detection = build_head('YOLOHead', **model_config.head)
-        self.stride = self.detection.stride
-        self._initialize_biases()
+        self.segmentation = build_head("SegmentationHead", **model_config.head)
+        
+        # self.detection = build_head('YOLOHead', **model_config.head)
+        # self.stride = self.detection.stride
 
+        self._initialize_biases()
         initialize_weights(self)
 
     def _initialize_biases(self, cf=None):
         # initialize biases into Detect(), cf is class frequency
         # https://arxiv.org/abs/1708.02002 section 3.3
-        m = self.detection  # Detect() module
-        for mi, s in zip(m.m, m.stride):  # from
-            b = mi.bias.view(m.na, -1)  # conv.bias(255) to (3,85)
-            b.data[:, 4] += math.log(8 / (640 / s) ** 2)  # obj (8 objects per 640 image)
-            b.data[:, 5:] += math.log(0.6 / (m.nc - 0.99)) if cf is None else torch.log(cf / cf.sum())  # cls
-            mi.bias = torch.nn.Parameter(b.view(-1), requires_grad=True)
+        # m = self.detection  # Detect() module
+        pass
+        # m = self.segmentation
+        # for mi, s in zip(m.m, m.stride):  # from
+        #     b = mi.bias.view(m.na, -1)  # conv.bias(255) to (3,85)
+        #     b.data[:, 4] += math.log(8 / (640 / s) ** 2)  # obj (8 objects per 640 image)
+        #     b.data[:, 5:] += math.log(0.6 / (m.nc - 0.99)) if cf is None else torch.log(cf / cf.sum())  # cls
+        #     mi.bias = torch.nn.Parameter(b.view(-1), requires_grad=True)
 
     def fuse(self):  # fuse model Conv2d() + BatchNorm2d() layers
         print('Fusing layers... ')
@@ -67,9 +70,21 @@ class Model(nn.Module):
 
     def forward(self, x):
         out = self.backbone(x)
+        # print("len(out)", len(out))
+        head_ = out[3:]
+        out = out[:3]
+        # print("len(head_)", len(head_))
         out = self.fpn(out)
         out = self.pan(out)
-        y = self.detection(list(out))
+        # y = self.detection(list(out))
+        # print(type(out))
+        # print(len(out))
+        # print(out.shape)
+        # head_input = list(out) +  head_
+        # print(type(head_[0]))
+        # print(type(head_[1]))
+        # print("head_input: ", len(head_input))
+        y = self.segmentation(out[0], head_[0], head_[1])
         return y
 
 
@@ -79,7 +94,7 @@ if __name__ == '__main__':
     device = torch.device('cpu')
     x = torch.zeros(1, 3, 608, 608).to(device)
 
-    model = Model(model_config='configs/model_yolo.yaml').to(device)
+    model = Model(model_config='configs/model_yolo_segmentation.yaml').to(device)
     # model.fuse()
     print("foward")
     y = model.forward(x)

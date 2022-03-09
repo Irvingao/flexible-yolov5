@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 from .yolo import YOLOHead
+from .seg import SegmentationHead
 
 __all__ = ['build_head', 'SegmentationHead']
 support_head = ['YOLOHead', 'SegmentationHead']

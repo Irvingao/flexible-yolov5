@@ -65,7 +65,7 @@ class SegmentationHead(nn.Module):
         self.outer_f2 = self.channels_out['outer_f2']
         self.outer_c3 = self.channels_out['outer_c3']
 
-        self.concat = Concat()
+        self.concat = Concat(dimension=1)
         self.Upsample_P3 = nn.Upsample(scale_factor=2, mode='nearest')
         self.CSP_P3 = BottleneckCSP(self.inner_h3, self.inner_h3, n=2)
         self.CBL_P3 = Conv(self.inner_h3, self.inner_h3)
@@ -75,12 +75,15 @@ class SegmentationHead(nn.Module):
         self.CBL_P2 = Conv(self.inner_h2, self.inner_h2)
  
         self.Upsample_P1 = nn.Upsample(scale_factor=2, mode='nearest')
-        self.conv = nn.Conv2d(256, self.nc, kernel_size=1, stride=1)
+        self.conv = nn.Conv2d(320, self.nc, kernel_size=1, stride=1)
 
-    def forward(self, inputs):
-        PP3, F2, C3 = inputs
+    def forward(self, PP3, F2, C3):
+        # PP3, F2, C3 = inputs
         up_3 = self.Upsample_P3(PP3)
-        
+        # print("PP3:", PP3.shape)
+        # print("F2:", F2.shape)
+        # print("C3:", C3.shape)
+        # print("up_3:", up_3.shape)
         up_3 = self.concat([up_3, C3])
         up_3 = self.CSP_P3(up_3)
         up_3 = self.CBL_P3(up_3)
@@ -92,5 +95,9 @@ class SegmentationHead(nn.Module):
         up_1 = self.Upsample_P1(up_2)
         out = self.conv(up_1)
         return out
-        
-seg = SegmentationHead(nc=5)
+
+if __name__ == '__main__':
+    seg = SegmentationHead(nc=5)
+    inputs = [torch.rand(1, 128, 76, 76), torch.rand(1, 64, 304, 304), torch.rand(1, 128, 152, 152)]
+    out = seg.forward(inputs)
+    print("out:", out.shape)
