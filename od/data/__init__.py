@@ -32,7 +32,7 @@ def make_data_loader(args, **kwargs):
         return train_loader, val_loader, test_loader, num_class
 
     elif args.dataset == 'coco':
-        train_set = coco.COCOSegmentation(args, split='train')
+        train_set = coco.COCOSegmentation(args, split='val')
         val_set = coco.COCOSegmentation(args, split='val')
         num_class = train_set.NUM_CLASSES
         train_loader = DataLoader(train_set, batch_size=args.batch_size, shuffle=True, **kwargs)
