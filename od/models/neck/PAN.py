@@ -54,8 +54,8 @@ class PAN(nn.Module):
         self.P5 = C3(self.inner_p4 + P5_size, self.inner_p5, self.get_depth(3), False)
         self.concat = Concat()
         self.out_shape = (self.inner_p3, self.inner_p4, self.inner_p5)
-        print("PAN input channel size: P3 {}, P4 {}, P5 {}".format(self.P3_size, self.P4_size, self.P5_size))
-        print("PAN output channel size: PP3 {}, PP4 {}, PP5 {}".format(self.inner_p3, self.inner_p4, self.inner_p5))
+        # print("PAN input channel size: P3 {}, P4 {}, P5 {}".format(self.P3_size, self.P4_size, self.P5_size))
+        # print("PAN output channel size: PP3 {}, PP4 {}, PP5 {}".format(self.inner_p3, self.inner_p4, self.inner_p5))
 
     def get_depth(self, n):
         return max(round(n * self.gd), 1) if n > 1 else n

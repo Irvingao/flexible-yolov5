@@ -52,9 +52,9 @@ class PyramidFeatures(nn.Module):
         self.out_shape = {'P3_size': self.C3_size + self.channels_out['outer_p4'],
                           'P4_size': self.channels_out['outer_p4'],
                           'P5_size': self.C5_size}
-        print("FPN input channel size: C3 {}, C4 {}, C5 {}".format(self.C3_size, self.C4_size, self.C5_size))
-        print("FPN output channel size: P3 {}, P4 {}, P5 {}".format(self.C3_size + self.channels_out['outer_p4'], self.channels_out['outer_p4'],
-                                                                    self.C5_size))
+        # print("FPN input channel size: C3 {}, C4 {}, C5 {}".format(self.C3_size, self.C4_size, self.C5_size))
+        # print("FPN output channel size: P3 {}, P4 {}, P5 {}".format(self.C3_size + self.channels_out['outer_p4'], self.channels_out['outer_p4'],
+                                                                    # self.C5_size))
 
     def get_depth(self, n):
         return max(round(n * self.gd), 1) if n > 1 else n

@@ -34,6 +34,7 @@ The original Yolo V5 was an amazing project. When I want to make some changes to
 - coord conv
 - drop_block
 - vgg, repvgg
+- segmentation head
 
 ## Notices
 
@@ -64,6 +65,11 @@ $ python scripts/train.py  --batch 16 --epochs 5 --data configs/data.yaml --cfg 
 ```
 
 A google colab demo in train_demo.ipynb
+
+#### Training for segmentation head
+1. check out od/data/dataset_path.py, and weite your path to it.
+2. change `batch size` or other train params in train_coco.sh.
+2. `./train_coco.sh`
 
 ### Testing and Visualize
 

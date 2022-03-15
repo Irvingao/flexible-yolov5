@@ -31,6 +31,7 @@ class SegmentationLosses(object):
         if self.cuda:
             criterion = criterion.cuda()
 
+        # loss = criterion(logit, target)
         loss = criterion(logit, target.long())
 
         if self.batch_average:

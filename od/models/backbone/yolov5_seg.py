@@ -56,9 +56,9 @@ class YOLOv5_seg(nn.Module):
         self.out_shape = {'C3_size': self.channels_out['stage3_2'],
                           'C4_size': self.channels_out['stage4_2'],
                           'C5_size': self.channels_out['conv1']}
-        print("backbone output channel: C3 {}, C4 {}, C5 {}".format(self.channels_out['stage3_2'],
-                                                                    self.channels_out['stage4_2'],
-                                                                    self.channels_out['conv1']))
+        # print("backbone output channel: C3 {}, C4 {}, C5 {}".format(self.channels_out['stage3_2'],
+        #                                                             self.channels_out['stage4_2'],
+        #                                                             self.channels_out['conv1']))
 
     def forward(self, x):
         x = self.stage1(x)

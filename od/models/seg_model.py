@@ -19,7 +19,7 @@ class Model(nn.Module):
 
         super(Model, self).__init__()
         if type(model_config) is str:
-            model_config = yaml.load(open(model_config, 'r'))
+            model_config = yaml.load(open(model_config, 'r'),Loader=yaml.FullLoader)
         model_config = Dict(model_config)
         # backbone type
         backbone_type = model_config.backbone.pop('type')
